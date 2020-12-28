@@ -15,16 +15,6 @@ fun Context.checkPermission(permission: String): Boolean {
     return checkCallingOrSelfPermission(this, permission) == PERMISSION_GRANTED
 }
 
-//fun Context.checkPermission(permission: String): Boolean {
-//    var permissionGranted = false
-//    when (checkCallingOrSelfPermission(this, permission)) {
-//        PERMISSION_GRANTED -> permissionGranted = true
-//        PERMISSION_DENIED -> permissionGranted = false
-//        PERMISSION_DENIED_APP_OP -> permissionGranted = false
-//    }
-//    return permissionGranted
-//}
-
 inline fun <reified T : Activity> Context.intentFor(vararg args: Pair<String, Any?>): Intent {
     val intent = Intent(this, T::class.java)
     for ((key, value) in args) {

@@ -1,8 +1,6 @@
 package com.example.onelabhw1
 
-import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
@@ -53,12 +51,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun openSecondaryActivity() {
-
-//        val intent2 = Intent(applicationContext, SecondaryActivity::class.java)
-//        intent2.putExtra("EXTRA_1", "value1")
-//        intent2.putExtra("EXTRA_2", 2)
-//        startActivity(intent2)
-
         val intent = intentFor<SecondaryActivity>(
             "EXTRA_1" to "value1",
             "EXTRA_2" to 2
@@ -66,39 +58,14 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-
     private fun showAlertDialog() {
-
-        val builder = AlertDialog.Builder(this).apply {
-            setTitle(R.string.app_name)
-            setMessage("This is Description!")
-            setPositiveButton(
-                R.string.default_web_client_id,
-                DialogInterface.OnClickListener { dialogInterface, i ->
-                    dialogInterface.dismiss()
-                })
-            setPositiveButton(R.string.default_web_client_id) { dialogInterface, i ->
-                dialogInterface.dismiss()
-            }
-            //onCLick = DialogInterface.OnClickListener {...}
-            //setPositiveButton(text) = positiveButton(text)
-        }
-        //builder.show()
-
         showDialog {
             title(R.string.app_name)
             description("This is Description!")
-
-//            positiveButton(R.string.default_web_client_id) {
-//                Toast.makeText(this@MainActivity, "Alert text", Toast.LENGTH_SHORT).show()
-//                it.dismiss()
-//            }
-
-//            description = "This is Description!"
-//            positiveButton(R.string.default_web_client_id) onCLick {
-//                Toast.makeText(this@MainActivity, "Alert text", Toast.LENGTH_SHORT).show()
-//                it.dismiss()
-//            }
+            positiveButton(R.string.default_web_client_id) onCLick {
+                Toast.makeText(this@MainActivity, "Alert text", Toast.LENGTH_SHORT).show()
+                it.dismiss()
+            }
         }
     }
 }
